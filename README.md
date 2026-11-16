@@ -1,2 +1,2 @@
 # CoderByteChallenges
-&lt;https://coderbyte.com/challenges>
+<https://coderbyte.com/challenges>
