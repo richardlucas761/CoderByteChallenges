@@ -1,9 +1,14 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace CodelandUserName
+namespace CodelandUsername
 {
-    internal static partial class MainClass
+    public static partial class MainClass
     {
+        /// <summary>
+        /// Return a string indicating whether a username is valid or not.
+        /// </summary>
+        /// <param name="str">A username to validate.</param>
+        /// <returns>true if the username is valid, false otherwise.</returns>
         public static string CodelandUsernameValidation(string str)
         {
             const string invalid = "false";
@@ -49,6 +54,9 @@ namespace CodelandUserName
             }
         }
 
+        /// <summary>
+        /// a-z A-Z 0-9 and underscore are the only valid characters.
+        /// </summary>
         [GeneratedRegex(@"^[a-zA-Z0-9_]+$")]
         private static partial Regex ValidUsername();
     }

@@ -2,5 +2,6 @@
   <Folder Name="/Solution Items/">
     <File Path="../README.md" />
   </Folder>
-  <Project Path="CodelandUserName/CodelandUserName.csproj" />
+  <Project Path="CodelandUserName.Tests/CodelandUsername.Tests.csproj" Id="0a869117-e42e-44aa-8226-71f18aa8a728" />
+  <Project Path="CodelandUserName/CodelandUserName.csproj" DisplayName="CodelandUsername" />
 </Solution>
