@@ -5,10 +5,11 @@ namespace CodelandUserName.Tests
     [TestClass]
     public sealed class CodelandUsernameValidationTests
     {
+        const string invalid = "false";
         const string valid = "true";
 
         [TestMethod]
-        public void ReturnsTrueWhenUsernameIsWhitespaceOnly()
+        public void ReturnsValidWhenUsernameIsWhitespaceOnly()
         {
             // Arrange
 
@@ -17,6 +18,66 @@ namespace CodelandUserName.Tests
 
             // Assert
             result.Should().Be(valid);
+        }
+
+        [TestMethod]
+        public void ReturnsInvalidWhenUsernameIsLessThanThreeCharacters()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("123");
+
+            // Assert
+            result.Should().Be(invalid);
+        }
+
+        [TestMethod]
+        public void ReturnsValidWhenUsernameIsFourCharacters()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("1234");
+
+            // Assert
+            result.Should().Be(valid);
+        }
+
+        [TestMethod]
+        public void ReturnsInvalidWhenUsernameIsMoreThanTwentyFiveCharacters()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("01234567890123456789123456");
+
+            // Assert
+            result.Should().Be(invalid);
+        }
+
+        [TestMethod]
+        public void ReturnsValidWhenUsernameIsTwentyFiveCharacters()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("0123456789012345678912345");
+
+            // Assert
+            result.Should().Be(valid);
+        }
+
+        [TestMethod]
+        public void ReturnsInvalidWhenUsernameDoesNotStartWithALetter()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("5username");
+
+            // Assert
+            result.Should().Be(invalid);
         }
     }
 }
