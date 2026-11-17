@@ -1,43 +1,55 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
-static class MainClass
+namespace CodelandUserName
 {
-    public static string CodelandUsernameValidation(string str)
+    internal static partial class MainClass
     {
-        const string invalid = "false";
-        const string valid = "true";
-
-        if (str.Length > 25)
+        public static string CodelandUsernameValidation(string str)
         {
-            return invalid;
+            const string invalid = "false";
+            const string valid = "true";
+
+            if (str.IsWhiteSpace())
+            {
+                return valid;
+            }
+
+            if (str.Length > 25)
+            {
+                return invalid;
+            }
+
+            if (str.Length < 4)
+            {
+                return invalid;
+            }
+
+            if (str.EndsWith('_'))
+            {
+                return invalid;
+            }
+
+            if (ValidUsername().IsMatch(str))
+            {
+                return valid;
+            }
+            else
+            {
+                return invalid;
+            }
         }
 
-        if (str.Length < 4)
+        static void Main()
         {
-            return invalid;
+            var username = Console.ReadLine();
+
+            if (username != null)
+            {
+                Console.WriteLine(CodelandUsernameValidation(username));
+            }
         }
 
-        if (str.EndsWith('_'))
-        {
-            return invalid;
-        }
-
-        if (Regex.IsMatch(str, @"^[a-zA-Z0-9_]+$"))
-        {
-            return valid;
-        }
-        else
-        {
-            return invalid;
-        }
-
+        [GeneratedRegex(@"^[a-zA-Z0-9_]+$")]
+        private static partial Regex ValidUsername();
     }
-
-    // keep this function call here
-    static void Main()
-    {
-        Console.WriteLine(CodelandUsernameValidation(Console.ReadLine()));
-    }
-
 }
