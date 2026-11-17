@@ -79,5 +79,29 @@ namespace CodelandUserName.Tests
             // Assert
             result.Should().Be(invalid);
         }
+
+        [TestMethod]
+        public void ReturnsInvalidWhenUsernameContainsAnInvalidCharacter()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("Username$");
+
+            // Assert
+            result.Should().Be(invalid);
+        }
+
+        [TestMethod]
+        public void ReturnsInvalidWhenUsernameEndsWithUnderscore()
+        {
+            // Arrange
+
+            // Act
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("Username123_");
+
+            // Assert
+            result.Should().Be(invalid);
+        }
     }
 }
