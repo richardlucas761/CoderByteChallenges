@@ -34,13 +34,19 @@ namespace CodelandUsername
                 return invalid;
             }
 
-            if (ValidUsername().IsMatch(str))
+            // Must start with a character
+            if (!CharactersOnly().IsMatch(str[0].ToString()))
             {
-                return valid;
+                return invalid;
+            }
+
+            if (!ValidUsername().IsMatch(str))
+            {
+                return invalid;
             }
             else
             {
-                return invalid;
+                return valid;
             }
         }
 
@@ -59,5 +65,11 @@ namespace CodelandUsername
         /// </summary>
         [GeneratedRegex(@"^[a-zA-Z0-9_]+$")]
         private static partial Regex ValidUsername();
+
+        /// <summary>
+        /// a-z A-Z only.
+        /// </summary>
+        [GeneratedRegex(@"^[a-zA-Z]+$")]
+        private static partial Regex CharactersOnly();
     }
 }

@@ -38,7 +38,7 @@ namespace CodelandUserName.Tests
             // Arrange
 
             // Act
-            var result = CodelandUsername.MainClass.CodelandUsernameValidation("1234");
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("a234");
 
             // Assert
             result.Should().Be(valid);
@@ -62,7 +62,7 @@ namespace CodelandUserName.Tests
             // Arrange
 
             // Act
-            var result = CodelandUsername.MainClass.CodelandUsernameValidation("0123456789012345678912345");
+            var result = CodelandUsername.MainClass.CodelandUsernameValidation("z123456789012345678912345");
 
             // Assert
             result.Should().Be(valid);
